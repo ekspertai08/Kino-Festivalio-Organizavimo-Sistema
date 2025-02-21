@@ -23,7 +23,24 @@ def coordinator_menu():
                 print("Filmų sąrašas tuščias.")
         elif user_input == "3":
             if mov_act.empty_list_check():
-                mov_act.show_movies_frm_list()
+                print("""
+            Filmo rodymo ir paieškos meniu.
+            Pasirinkite ar rinksitės filmą pagal sąrašą ar pagal paiešką:
+            1. Parodyti filmų sąrašą.
+            2. Ieškoti filmo.
+            0. Grįžti atgal.
+""")
+                user_input = input("\nĮveskite pasirinkto meniu punkto numerį: ")
+                if user_input == "1":
+                    mov_act.show_movies_frm_list()
+                elif user_input == "2":
+                    result = mov_act.search_movies()
+                    if len(result) == 0:
+                        print("Nieko nerasta.")
+                    else:
+                        print("Rasta:")
+                        for num, i in enumerate(result, 1):
+                            print(f"{num}. {i}")   
             else:
                 print("Filmų sąrašas tuščias.")
         elif user_input == "4":
