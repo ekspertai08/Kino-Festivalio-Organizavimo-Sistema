@@ -11,7 +11,7 @@ class Movie:
         return f"Pavadinimas: {self.name}, ilgis: {self.lenght} min, žanras: {self.genre}, režisierius: {self.director}, išleidimo metai: {self.release_year}, amžiaus grupė: {self.age_rating}."
 
     def change_movie_details(self):
-        attributes = ["name", "length", "genre", "director", "release_year", "age_rating"]
+        attributes = ["name", "lenght", "genre", "director", "release_year", "age_rating"]
         while True:
             print("""Galimi filmo parametrų redagavimo pasirinkimai:
                   1. Pavadinimas.

@@ -48,3 +48,9 @@ def select_movie(number):
     else:
         print("Filmų sąrašas tuščias.")
 
+def empty_list_check():
+    movie_list = open_movie_list_file()
+    if movie_list != False and len(movie_list) > 0:
+        return True
+    else:
+        return False

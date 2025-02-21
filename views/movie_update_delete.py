@@ -1,5 +1,5 @@
 import services.actions_with_movies as mov_act
-import views.movie_choose_options as opt
+import views.movie_edit_delete as opt
 
 def movie_update_delete_menu():
     while True:   
@@ -11,10 +11,9 @@ def movie_update_delete_menu():
 
         user_input = input("\nĮveskite pasirinkto meniu punkto numerį: ")
         if user_input == "1":
-            pass
+            opt.movie_delete()
         elif user_input == "2":
-            opt.movie_choose_options()
-
+            opt.movie_edit()
         elif user_input == "0":
             break
         else:

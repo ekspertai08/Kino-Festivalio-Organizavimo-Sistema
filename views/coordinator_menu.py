@@ -7,7 +7,7 @@ def coordinator_menu():
         print("""
     Organizatoriaus meniu:
     1. Pridėti naują filmą.
-    2. Pašalinti arba antaujinti esamą filmą.
+    2. Pašalinti arba atnaujinti esamą filmą.
     3. Filmų peržiūra ir paieška.
     4. Seansų planavimas.
     0. Grįžti į pradinį meniu.""")
@@ -17,11 +17,17 @@ def coordinator_menu():
             mov_act.save_movie_to_list(new_movie)
             print("Filmas pridėtas.")
         elif user_input == "2":
-            mud.movie_update_delete_menu()
+            if mov_act.empty_list_check():
+                mud.movie_update_delete_menu()
+            else:
+                print("Filmų sąrašas tuščias.")
         elif user_input == "3":
-            mov_act.show_movies_frm_list()
+            if mov_act.empty_list_check():
+                mov_act.show_movies_frm_list()
+            else:
+                print("Filmų sąrašas tuščias.")
         elif user_input == "4":
-            pass
+            print("Kol kas seansų planavimas nepasiekiamas.")
         elif user_input == "0":
             break
         else:
