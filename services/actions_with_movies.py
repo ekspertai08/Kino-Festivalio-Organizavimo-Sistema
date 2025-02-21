@@ -1,0 +1,50 @@
+import os
+import pickle
+import models.movie as movie
+
+def create_movie_object():
+    name = input("Įveskite filmo pavadinimą: ")
+    lenght = input("Įveskite filmo ilgį minutėmis: ")
+    genre = input("Įveskite filmo žanrą: ")
+    director = input("Įveskite filmo žanrą: ")
+    release_year = input("Įveskite filmo išleidimo metus: ")
+    age_rating = input("Įveskite filmo amžiaus grupę: ")
+    return movie.Movie(name, lenght, genre, director, release_year, age_rating)
+
+def open_movie_list_file():
+    if os.path.exists("data/movie_list.pickle"):
+        with open("data/movie_list.pickle", "rb") as file:
+            return pickle.load(file)
+    else:
+        return False
+
+def save_updated_movie(updated_list):
+    with open("data/movie_list.pickle", "wb") as file:
+        pickle.dump(updated_list, file)
+
+
+def save_movie_to_list(movie):
+    if open_movie_list_file():
+        movie_list = open_movie_list_file()
+        movie_list.append(movie)
+        with open("data/movie_list.pickle", "wb") as file:
+            pickle.dump(movie_list, file)
+    else:
+        with open("data/movie_list.pickle", "wb") as file:
+            movie_list = []
+            movie_list.append(movie)
+            pickle.dump(movie_list, file)
+
+def show_movies_frm_list():
+    if open_movie_list_file():
+        movie_list = open_movie_list_file()
+        for num, i in enumerate(movie_list, 1):
+            print(f"\t{num}. {i}")
+
+def select_movie(number):
+    if open_movie_list_file():
+        movie_list = open_movie_list_file()
+        return movie_list[number]
+    else:
+        print("Filmų sąrašas tuščias.")
+
