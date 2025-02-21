@@ -1,4 +1,4 @@
-import views.coordinator_menu
+import views.first_menu
 
-views.coordinator_menu.coordinator_menu()
+views.first_menu.first_menu()
 

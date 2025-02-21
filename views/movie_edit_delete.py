@@ -23,9 +23,8 @@ def movie_edit():
                             if user_input in range(1, len(movie_list)+1):
                                 a = movie_list[user_input-1]
                                 a.change_movie_details()
-                                print(a)
-                                # print(movie_list[user_input-1])
-                                # mov_act.save_updated_movie(movie_list)
+                                print(movie_list[user_input-1])
+                                mov_act.save_updated_movie(movie_list)
                             else:
                                 print("Tokio numerio nėra.")
                         else:
