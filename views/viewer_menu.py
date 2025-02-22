@@ -1,4 +1,6 @@
 import services.actions_with_movies as mov_act
+import services.actions_with_screenings as scr_act
+import views.ticket_reservation_menu as rs_menu
 
 def viewer_menu(viewer):
     while True:
@@ -6,8 +8,9 @@ def viewer_menu(viewer):
     Žiūrovo meniu.
     1. Pamatyti filmų sąrašą.
     2. Ieškoti filmo.
-    3. Rezervuoti bilietą.
-    4. Žiūrėto filmo įvertinimas.
+    3. Pamatyti filmų seansus.
+    4. Rezervuoti bilietą.
+    5. Žiūrėto filmo įvertinimas.
     0. Grįžti į vartotojo tipo meniu.
 """)
         user_input = input("\nĮveskite pasirinkto meniu punkto numerį: ")
@@ -28,8 +31,13 @@ def viewer_menu(viewer):
             else:
                 print("Filmų sąrašas tuščias.")
         elif user_input == "3":
-            pass
+              scr_act.show_screenings_list()
         elif user_input == "4":
+            if scr_act.empty_screenings_list_check():
+                rs_menu.ticket_reservation_menu()
+            else:
+                print("Šiuo metu jokių kino seansų nėra.")
+        elif user_input == "5":
             pass
         elif user_input == "0":
             break

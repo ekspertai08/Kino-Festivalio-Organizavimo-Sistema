@@ -9,6 +9,9 @@ class Movie:
 
     def __str__(self):
         return f"Pavadinimas: {self.name}, ilgis: {self.lenght} min, žanras: {self.genre}, režisierius: {self.director}, išleidimo metai: {self.release_year}, amžiaus grupė: {self.age_rating}."
+    
+    def __repr__(self):
+        return f"Pavadinimas: {self.name}"
 
     def change_movie_details(self):
         attributes = ["name", "lenght", "genre", "director", "release_year", "age_rating"]

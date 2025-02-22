@@ -6,28 +6,22 @@ import os
 def create_screening_object():
     while True:
         try:
-            screening_date = datetime.datetime.strptime(input("Įveskite kino seanso datą, formatu YYYY-MM-DD: "), "%Y-%m-%d")
+            screening_date_time = datetime.datetime.strptime(input("Įveskite kino seanso datą ir laiką, formatu YYYY-MM-DD, HH:MM : "), "%Y-%m-%d, %H:%M")
             break
         except ValueError:
-            print("Data įvesta netinkamu formatu. Bandykite dar kartą.")
-    while True:
-        try:
-            screening_time_start = datetime.datetime.strptime(input("Įveskite kino seanso pradžios laiką, formatu HH:MM: "), "%H:%M")
-            break
-        except ValueError:
-            print("Laikas įvestas netinkamu formatu. Bandykite dar kartą.")
+            print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
     while True:
         try:
             aviable_seats = int(input("Įveskite maksimalų žiurovų kiekį: "))
             break
         except ValueError:
             print("Įvestis galima tik sveikaisiais skaičiais. Bandykite dar kartą.")
-    new = scr_class.Movie_screening(screening_date, screening_time_start, aviable_seats)
+    new = scr_class.Movie_screening(screening_date_time, aviable_seats)
     return new
 
 def open_sceenings_list_file():
     if os.path.exists("data/sceening_list_pickle"):
-        with open("data/sceening_list_pickle", "wb") as file:
+        with open("data/sceening_list_pickle", "rb") as file:
             return pickle.load(file)
     else:
         return False
@@ -51,6 +45,15 @@ def empty_screenings_list_check():
     else:
         return False
 
+def show_screenings_list():
+    screenings_list = open_sceenings_list_file()
+    for num, i in enumerate(screenings_list, 1):
+        print(f"{num}. {i}")
+
+def save_updated_screening_list(screening_list):
+    if open_sceenings_list_file():
+        with open("data/sceening_list_pickle", "wb") as file:
+            pickle.dump(screening_list, file)
 
 # def exist_viewer_check(viewer_object):
 #     viewer_list = open_viewers_list_file()
