@@ -37,6 +37,21 @@ def exist_viewer_check(viewer_object):
     for i in viewer_list:
         if i.name == viewer_object.name:
             print("Toks žiūrovas jau egzistuoja.")
-        else:
-            save_viewer_to_list(viewer_object)
-            print("Naujas žiūrovas sukurtas, galite prisijungti.")
+            return        
+    save_viewer_to_list(viewer_object)
+    print("Naujas žiūrovas sukurtas, galite prisijungti.")
+
+
+def save_updated_viewer(new):
+    if open_viewers_list_file():
+        viewers_list = open_viewers_list_file()
+        for num, viewer in enumerate(viewers_list):
+            if viewer.name == new.name:
+                viewers_list[num] = new
+        with open("data/viewers_list.pickle", "wb") as file:
+            pickle.dump(viewers_list, file)
+    else:
+        with open("data/viewers_list.pickle", "wb") as file:
+            viewers_list = []
+            viewers_list.append(new)
+            pickle.dump(viewers_list, file)

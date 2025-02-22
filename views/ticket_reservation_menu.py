@@ -3,7 +3,7 @@ import services.actions_with_screenings as scr_act
 
 
 
-def ticket_reservation_menu ():
+def ticket_reservation_menu (viewer):
     print("""
 Bilietų reservavimo meniu.
           
@@ -19,8 +19,9 @@ Galimi filmų seansai:
                 if scr_list[user_input-1].avialable_seats > 0:
                     scr_list[user_input-1].avialable_seats -= 1
                     scr_act.save_updated_screening_list(scr_list)
+                    viewer.add_tickets(scr_list[user_input-1])
                     print("Bilietas rezervuotas.")
-                    break
+                    return viewer
                 else:
                     print("Šiame seanse vietų nebėra.")
             else: 

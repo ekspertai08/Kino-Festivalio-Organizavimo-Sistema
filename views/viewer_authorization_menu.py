@@ -20,9 +20,11 @@ def viewer_authorization_menu():
                 viewers_list = vie_act.open_viewers_list_file()
                 for i in viewers_list:
                     if i.name == viewer_name:
-                        vm.viewer_menu(i)
-                    else:
-                        print("Tokio žiūrovo nėra.")
+                        upd = vm.viewer_menu(i)
+                        vie_act.save_updated_viewer(upd)
+                        break
+                else:
+                    print("Tokio žiūrovo nėra.")
             else:
                 print("Šiuo metu registruotų žiūrovų nėra.")
         elif user_input == "2":

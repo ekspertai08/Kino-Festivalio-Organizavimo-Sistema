@@ -1,5 +1,6 @@
 import services.actions_with_movies as mov_act
 import services.actions_with_screenings as scr_act
+import services.actions_with_viewers as vie_act
 import views.ticket_reservation_menu as rs_menu
 
 def viewer_menu(viewer):
@@ -10,7 +11,8 @@ def viewer_menu(viewer):
     2. Ieškoti filmo.
     3. Pamatyti filmų seansus.
     4. Rezervuoti bilietą.
-    5. Žiūrėto filmo įvertinimas.
+    5. Peržiūrėti rezervacijas.
+    6. Žiūrėto filmo įvertinimas.
     0. Grįžti į vartotojo tipo meniu.
 """)
         user_input = input("\nĮveskite pasirinkto meniu punkto numerį: ")
@@ -34,12 +36,19 @@ def viewer_menu(viewer):
               scr_act.show_screenings_list()
         elif user_input == "4":
             if scr_act.empty_screenings_list_check():
-                rs_menu.ticket_reservation_menu()
+                viewer = rs_menu.ticket_reservation_menu(viewer)
             else:
                 print("Šiuo metu jokių kino seansų nėra.")
         elif user_input == "5":
+            if viewer.tickets:
+                print("\nJūs turite rezervacijas į šiuos seansus:\n")
+                for num, i in enumerate(viewer.tickets, 1):
+                    print(f"{num}. {i}")
+            else:
+                print("Rezervuotų bilietų nėra.")
+        elif user_input == "6":
             pass
         elif user_input == "0":
-            break
+            return viewer            
         else:
             print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
