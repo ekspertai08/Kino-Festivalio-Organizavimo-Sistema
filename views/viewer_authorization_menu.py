@@ -20,7 +20,7 @@ def viewer_authorization_menu():
                 viewers_list = vie_act.open_viewers_list_file()
                 for i in viewers_list:
                     if i.name == viewer_name:
-                        vm.viewer_menu()
+                        vm.viewer_menu(i)
                     else:
                         print("Tokio žiūrovo nėra.")
             else:

@@ -1,5 +1,6 @@
 import services.actions_with_movies as mov_act
 import views.movie_update_delete as mud
+import views.screening_menu as scr_menu
 
 
 def coordinator_menu():
@@ -44,7 +45,7 @@ def coordinator_menu():
             else:
                 print("Filmų sąrašas tuščias.")
         elif user_input == "4":
-            print("Kol kas seansų planavimas nepasiekiamas.")
+            scr_menu.screening_menu()
         elif user_input == "0":
             break
         else:

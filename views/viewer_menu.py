@@ -1,6 +1,6 @@
 import services.actions_with_movies as mov_act
 
-def viewer_menu():
+def viewer_menu(viewer):
     while True:
         print("""
     Žiūrovo meniu.
