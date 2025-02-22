@@ -1,5 +1,6 @@
 import views.coordinator_authorization as ca
 import views.viewer_menu as vm
+import views.viewer_authorization_menu as va
 
 def first_menu():
     while True:
@@ -16,7 +17,7 @@ Kino Festivalių Organizavimo Sistema
         if user_input == "1":
             ca.coordinator_authorization()
         elif user_input == "2":
-            vm.viewer_menu()
+            va.viewer_authorization_menu()
         elif user_input == "0":
             exit()
         else:
