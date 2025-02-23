@@ -1,4 +1,5 @@
 import services.actions_with_movies as mov_act
+import services.actions_with_screenings as scr_act
 
 def movie_edit():
     while True:
@@ -21,10 +22,12 @@ def movie_edit():
                             user_input = int(user_input)
                             movie_list = mov_act.open_movie_list_file()
                             if user_input in range(1, len(movie_list)+1):
+                                old_movie_name = movie_list[user_input-1].name
                                 a = movie_list[user_input-1]
                                 a.change_movie_details()
                                 print(movie_list[user_input-1])
                                 mov_act.save_updated_movie(movie_list)
+                                scr_act.update_screening_list_after_movie_update(old_movie_name, a)
                             else:
                                 print("Tokio numerio nėra.")
                         else:
@@ -66,8 +69,10 @@ def movie_delete():
                             user_input = int(user_input)
                             movie_list = mov_act.open_movie_list_file()
                             if user_input in range(1, len(movie_list)+1):
+                                old_movie_name = movie_list[user_input-1].name
                                 movie_list.pop(user_input-1)
                                 mov_act.save_updated_movie(movie_list)
+                                scr_act.update_screening_list_after_movie_delete(old_movie_name)
                                 print("Filmas ištrintas.")
                                 break
                             else:
