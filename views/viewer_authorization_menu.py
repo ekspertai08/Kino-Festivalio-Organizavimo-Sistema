@@ -22,6 +22,7 @@ def viewer_authorization_menu():
                     if i.name == viewer_name:
                         upd = vm.viewer_menu(i)
                         vie_act.save_updated_viewer(upd)
+                        print("Žiūrovas sukurtas, galite prisijungti.")
                         break
                 else:
                     print("Tokio žiūrovo nėra.")

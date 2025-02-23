@@ -11,8 +11,23 @@ Kino seansų planavimo meniu.
         user_input = input("Įveskite pasirinkto meniu punkto numerį: ")
         if user_input == "1":
             if mov_act.empty_list_check():
-                new = scr_act.create_screening_object()
-                new.add_movie_to_screening()
+                mov_act.show_movies_frm_list()
+                movie_list = mov_act.open_movie_list_file()
+                while True:
+                    try:
+                        user_input = input("Įveskite filmo numerį, kurio seansą norite suplanuoti: ")
+                        user_input = int(user_input)
+                        if user_input > 0 and user_input <= len(movie_list):
+                            movie = movie_list[user_input-1]
+                            # nscr_act.create_screening_object(movie)
+                            break
+                        else:
+                            raise IndexError
+                    except ValueError:
+                        print(f"{user_input} nėra skaičius. Bandykite dar kartą.")
+                    except IndexError:
+                        print(f"'{user_input}' nėra tokio filmo numerio. Bandykite dar kartą.")
+                new = scr_act.create_screening_object(movie)
                 scr_act.save_sceening_to_file(new)
             else:
                 print("Seanso sukūrimas negalimas, nes filmų sąrašas tuščias.")

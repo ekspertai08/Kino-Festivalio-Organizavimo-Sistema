@@ -13,7 +13,7 @@ def viewer_menu(viewer):
     4. Rezervuoti bilietą.
     5. Peržiūrėti rezervacijas.
     6. Žiūrėto filmo įvertinimas.
-    0. Grįžti į vartotojo tipo meniu.
+    0. Grįžti į žiūrovo autorizacijos meniu.
 """)
         user_input = input("\nĮveskite pasirinkto meniu punkto numerį: ")
         if user_input == "1":
@@ -33,7 +33,10 @@ def viewer_menu(viewer):
             else:
                 print("Filmų sąrašas tuščias.")
         elif user_input == "3":
-              scr_act.show_screenings_list()
+            if scr_act.empty_screenings_list_check():
+                scr_act.show_screenings_list()
+            else:
+                print("Šiuo metu jokių kino seansų nėra..")
         elif user_input == "4":
             if scr_act.empty_screenings_list_check():
                 viewer = rs_menu.ticket_reservation_menu(viewer)

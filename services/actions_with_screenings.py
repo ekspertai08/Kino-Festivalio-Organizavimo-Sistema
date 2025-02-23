@@ -3,20 +3,35 @@ import pickle
 import models.movie_screening_class as scr_class
 import os
 
-def create_screening_object():
-    while True:
-        try:
-            screening_date_time = datetime.datetime.strptime(input("Įveskite kino seanso datą ir laiką, formatu YYYY-MM-DD, HH:MM : "), "%Y-%m-%d, %H:%M")
-            break
-        except ValueError:
-            print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
+
+def create_screening_object(movie):
+    screening_list = open_sceenings_list_file()
+    if screening_list:
+        while True:
+            try:
+                screening_date_time = datetime.datetime.strptime(input("Įveskite kino seanso datą ir laiką, formatu YYYY-MM-DD, HH:MM : "), "%Y-%m-%d, %H:%M")
+                for i in screening_list:
+                    if i.screening_date_time <= screening_date_time <= i.screening_end or i.screening_date_time <= screening_date_time+datetime.timedelta(minutes=int(movie.lenght)) <= i.screening_end:
+                        raise IndexError
+                break
+            except IndexError:
+                print(f"šiuo metu rodomas kitas kino seansas:\n{i}\n")
+            except ValueError:
+                print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
+    else:
+        while True:
+            try:
+                screening_date_time = datetime.datetime.strptime(input("Įveskite kino seanso datą ir laiką, formatu YYYY-MM-DD, HH:MM : "), "%Y-%m-%d, %H:%M")
+                break
+            except ValueError:
+                print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
     while True:
         try:
             aviable_seats = int(input("Įveskite maksimalų žiurovų kiekį: "))
             break
         except ValueError:
             print("Įvestis galima tik sveikaisiais skaičiais. Bandykite dar kartą.")
-    new = scr_class.Movie_screening(screening_date_time, aviable_seats)
+    new = scr_class.Movie_screening(screening_date_time, aviable_seats, movie)
     return new
 
 def open_sceenings_list_file():
