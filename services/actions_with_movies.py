@@ -1,14 +1,53 @@
 import os
 import pickle
 import models.movie as movie
+import datetime
 
 def create_movie_object():
-    name = input("Įveskite filmo pavadinimą: ")
-    lenght = input("Įveskite filmo ilgį minutėmis: ")
+    movie_list = open_movie_list_file()
+    while True:
+        try:
+            name = input("Įveskite filmo pavadinimą: ")
+            if name == "":
+                raise ValueError("Filmo pavadinimo įvestis negali būti tuščia. Bandykite dar kartą.")
+            for i in movie_list:
+                if i.name == name:
+                    raise ValueError("Filmas tokiu pavadinimu jau yra. Bandykite dar kartą.")
+            break
+        except ValueError as e:
+            print(e)
+    while True:
+        lenght = input("Įveskite filmo ilgį minutėmis: ")
+        try:
+            if lenght == "":
+                raise KeyError("Filmo trukmės įvestis negali būti tuščia. Bandykite dar kartą.")
+            lenght = int(lenght)
+            break
+        except KeyError as e:
+            print(e)
+        except ValueError:
+            print("Filmo ilgį galima įvesti tik sveikaisiais skaičiais. Bandykite dar kartą.")
     genre = input("Įveskite filmo žanrą: ")
     director = input("Įveskite filmo režisierių: ")
-    release_year = input("Įveskite filmo išleidimo metus: ")
-    age_rating = input("Įveskite filmo amžiaus grupę: ")
+    while True:
+        release_year = input("Įveskite filmo išleidimo metus: ")
+        try:
+            release_year = int(release_year)
+            if release_year > int(datetime.datetime.now().year):
+                print("Filmo išleidimo data negali būti atetyje. Bandykite dar kartą.")
+            elif release_year < 1888:
+                print("Filmo išleidimo data negali būti ankstesnė, nei pirmo pasaulyje išleisto filmo. Bandykite dar kartą.\n(PS pirmas filmas išleistas 1888 metais)")
+            else:
+                break
+        except ValueError:
+            print("Filmo išleidimo metai, gali būti įvesti tik sveikaisiais skaičiais. Bandykite dar kartą.")
+    age_ratings = ["V", "N-7", "N-13", "N-16", "N-18"]
+    while True:
+        age_rating = input("Įveskite filmo amžiaus grupę: ")
+        if age_rating not in age_ratings:
+            print("Įvesta neteisinga amžiaus grupė. Galimos amžiaus grupės yra: V, N-7, N-13, N-16, N-18.\nBandykite dar kartą.")
+        else:
+            break
     return movie.Movie(name, lenght, genre, director, release_year, age_rating)
 
 def open_movie_list_file():

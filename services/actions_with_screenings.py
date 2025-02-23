@@ -77,7 +77,7 @@ def update_screening_list_after_movie_delete(old_name):
             if i.screening_movie != None:
                 if i.screening_movie.name == old_name:
                     number = num
-        screening_list[number].screening_movie = None
+                screening_list[number].screening_movie = None
         save_updated_screening_list(screening_list)
 
 def update_screening_list_after_movie_update(old_name, updated_movie):
