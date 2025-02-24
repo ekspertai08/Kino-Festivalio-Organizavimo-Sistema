@@ -50,7 +50,7 @@ def viewer_menu(viewer):
             else:
                 print("Rezervuotų bilietų nėra.")
         elif user_input == "6":
-            pass
+            print("Kol kas nėra peržiūrėtų filmų.")            
         elif user_input == "0":
             return viewer            
         else:

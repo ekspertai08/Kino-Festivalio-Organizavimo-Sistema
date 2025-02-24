@@ -72,23 +72,25 @@ def save_updated_screening_list(screening_list):
 
 def update_screening_list_after_movie_delete(old_name):
     screening_list = open_sceenings_list_file()
-    if len(screening_list)>0 and screening_list != False:
-        for num,i in enumerate(screening_list):
-            if i.screening_movie != None:
-                if i.screening_movie.name == old_name:
-                    number = num
-                screening_list[number].screening_movie = None
-        save_updated_screening_list(screening_list)
+    if screening_list != False:
+        if len(screening_list)>0:
+            for num,i in enumerate(screening_list):
+                if i.screening_movie != None:
+                    if i.screening_movie.name == old_name:
+                        number = num
+                        screening_list[number].screening_movie = None
+                        save_updated_screening_list(screening_list)
 
 def update_screening_list_after_movie_update(old_name, updated_movie):
     screening_list = open_sceenings_list_file()
-    if len(screening_list)>0 and screening_list != False:
-        for num,i in enumerate(screening_list):
-            if i.screening_movie != None:
-                if i.screening_movie.name == old_name:
-                    number = num
-        screening_list[number].screening_movie = updated_movie
-        save_updated_screening_list(screening_list)
+    if screening_list != False:
+        if len(screening_list)>0:
+            for num,i in enumerate(screening_list):
+                if i.screening_movie != None:
+                    if i.screening_movie.name == old_name:
+                        number = num
+                        screening_list[number].screening_movie = updated_movie
+                        save_updated_screening_list(screening_list)
 
 # def exist_viewer_check(viewer_object):
 #     viewer_list = open_viewers_list_file()

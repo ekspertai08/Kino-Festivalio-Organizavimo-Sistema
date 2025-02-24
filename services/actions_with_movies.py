@@ -10,9 +10,10 @@ def create_movie_object():
             name = input("Įveskite filmo pavadinimą: ")
             if name == "":
                 raise ValueError("Filmo pavadinimo įvestis negali būti tuščia. Bandykite dar kartą.")
-            for i in movie_list:
-                if i.name == name:
-                    raise ValueError("Filmas tokiu pavadinimu jau yra. Bandykite dar kartą.")
+            if empty_list_check():
+                for i in movie_list:
+                    if i.name == name:
+                        raise ValueError("Filmas tokiu pavadinimu jau yra. Bandykite dar kartą.")
             break
         except ValueError as e:
             print(e)
@@ -21,6 +22,8 @@ def create_movie_object():
         try:
             if lenght == "":
                 raise KeyError("Filmo trukmės įvestis negali būti tuščia. Bandykite dar kartą.")
+            elif lenght <= 0:
+                raise KeyError("Filmo trukmė negali būti mažesnė už 0, ar lygi 0.")
             lenght = int(lenght)
             break
         except KeyError as e:
@@ -113,6 +116,8 @@ def search_movies():
             user_input = int(user_input)
             if user_input in range(1, 7):
                 value = input("Įveskite ieškomą vertę: ")
+                if value.isnumeric():
+                    value = float(value)
                 result_list = [movie for movie in movie_list if getattr(movie, attributes[user_input-1]) == value]
                 return result_list
             else:
