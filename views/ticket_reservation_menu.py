@@ -22,7 +22,7 @@ Galimi filmų seansai:
                 if scr_list[user_input-1].avialable_seats > 0:
                     scr_list[user_input-1].avialable_seats -= 1
                     scr_act.save_updated_screening_list(scr_list)
-                    viewer.add_tickets(scr_list[user_input-1])
+                    viewer.add_tickets(scr_list[user_input-1].id)
                     print("Bilietas rezervuotas.")
                     return viewer
                 else:

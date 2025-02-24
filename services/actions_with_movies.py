@@ -21,10 +21,10 @@ def create_movie_object():
         lenght = input("Įveskite filmo ilgį minutėmis: ")
         try:
             if lenght == "":
-                raise KeyError("Filmo trukmės įvestis negali būti tuščia. Bandykite dar kartą.")
-            elif lenght <= 0:
-                raise KeyError("Filmo trukmė negali būti mažesnė už 0, ar lygi 0.")
+                raise KeyError("Filmo trukmės įvestis negali būti tuščia. Bandykite dar kartą.")        
             lenght = int(lenght)
+            if lenght <= 0:
+                raise KeyError("Filmo trukmė negali būti mažesnė už 0, ar lygi 0.")
             break
         except KeyError as e:
             print(e)

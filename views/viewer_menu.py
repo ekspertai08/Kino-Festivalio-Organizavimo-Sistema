@@ -45,8 +45,11 @@ def viewer_menu(viewer):
         elif user_input == "5":
             if viewer.tickets:
                 print("\nJūs turite rezervacijas į šiuos seansus:\n")
-                for num, i in enumerate(viewer.tickets, 1):
-                    print(f"{num}. {i}")
+                screening_list = scr_act.open_sceenings_list_file()
+                for i in viewer.tickets:
+                    for a in screening_list:
+                        if i == a.id:
+                            print(f"1. {a}")
             else:
                 print("Rezervuotų bilietų nėra.")
         elif user_input == "6":

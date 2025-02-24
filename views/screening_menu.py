@@ -19,7 +19,6 @@ Kino seansų planavimo meniu.
                         user_input = int(user_input)
                         if user_input > 0 and user_input <= len(movie_list):
                             movie = movie_list[user_input-1]
-                            # nscr_act.create_screening_object(movie)
                             break
                         else:
                             raise IndexError
@@ -29,6 +28,7 @@ Kino seansų planavimo meniu.
                         print(f"'{user_input}' nėra tokio filmo numerio. Bandykite dar kartą.")
                 new = scr_act.create_screening_object(movie)
                 scr_act.save_sceening_to_file(new)
+                break
             else:
                 print("Seanso sukūrimas negalimas, nes filmų sąrašas tuščias.")
         elif user_input == "2":
