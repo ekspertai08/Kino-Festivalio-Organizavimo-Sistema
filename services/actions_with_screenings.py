@@ -41,6 +41,7 @@ def create_screening_object(movie):
                     for i in screening_list:
                         if i.id == id:
                             raise ValueError
+                    break
                 except ValueError:
                     print("Toks ID jau yra, nurodykite kitokį.")
     else:

@@ -10,19 +10,19 @@ class Movie:
         self.release_year = release_year
         self.age_rating = age_rating
         self.rating_list = []
-        self.rating = self.rating()
+        # self.ratings = self.rating()
 
     def __str__(self):
-        return f"Pavadinimas: {self.name}, ilgis: {self.lenght} min, žanras: {self.genre}, režisierius: {self.director}, išleidimo metai: {self.release_year}, amžiaus grupė: {self.age_rating}, įvertinimų reitingas: {self.rating}"
+        return f"Pavadinimas: {self.name}, ilgis: {self.lenght} min, žanras: {self.genre}, režisierius: {self.director}, išleidimo metai: {self.release_year}, amžiaus grupė: {self.age_rating}, įvertinimų reitingas: {self.rating()}"
     
     def __repr__(self):
         return f"Pavadinimas: {self.name}"
 
     def rating(self):
-        if len(self.rating_list) == 0:
+        if self.rating_list == []:
             return f"Įvertinimų dar nėra"
         else:
-            return round(sum(self.rating_list)/len(self.rating_list), ndigits=1)
+            return round((sum(self.rating_list))/len(self.rating_list), ndigits=1)
 
     def change_movie_details(self):
         attributes = ["name", "lenght", "genre", "director", "release_year", "age_rating"]

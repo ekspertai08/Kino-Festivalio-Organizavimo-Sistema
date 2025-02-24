@@ -3,7 +3,7 @@
 class Viewer:
     def __init__(self, name):
         self.name = name
-        self.watched_movies = []
+        self.rated_movies = []
         self.tickets = []
 
     def add_tickets(self, screening):

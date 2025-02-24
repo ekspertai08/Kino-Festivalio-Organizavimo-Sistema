@@ -10,7 +10,7 @@ class Movie_screening:
         self.id = id
 
     def __str__(self):
-        return f"Seanso id: {self.id}\nSeanso pradžios data ir laikas: {self.screening_date_time}\nSeanso pabaigos data ir laikas: {self.screening_end}\nLaisvų vietų kiekis: {self.avialable_seats}\nSeanso rodomas filmas: \t{self.screening_movie_if()}"
+        return f"Seanso pradžios data ir laikas: {self.screening_date_time}\nSeanso pabaigos data ir laikas: {self.screening_end}\nLaisvų vietų kiekis: {self.avialable_seats}\nSeanso rodomas filmas: \t{self.screening_movie_if()}"
     
     def screening_movie_if(self):
         if self.screening_movie == None:
