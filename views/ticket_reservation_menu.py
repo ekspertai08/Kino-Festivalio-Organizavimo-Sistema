@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import services.actions_with_screenings as scr_act
 
 
@@ -23,13 +26,13 @@ Galimi filmų seansai:
                     scr_list[user_input-1].avialable_seats -= 1
                     scr_act.save_updated_screening_list(scr_list)
                     viewer.add_tickets(scr_list[user_input-1].id)
-                    print("Bilietas rezervuotas.")
+                    print(f"{Fore.GREEN}Bilietas rezervuotas.")
                     return viewer
                 else:
                     print("Šiame seanse vietų nebėra.")
             else: 
-                print("Tokio numerio seanso nėra. Bandykite dar kartą.")
+                print(f"{Fore.RED}Tokio numerio seanso nėra. Bandykite dar kartą.")
         except ValueError:
-            print("Įvestis galima tik sveikais skaičiais. Bandykite dar kartą.")
+            print(f"{Fore.RED}Įvestis galima tik sveikais skaičiais. Bandykite dar kartą.")
     
     

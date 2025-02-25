@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import services.actions_with_movies as mov_act
 import views.movie_edit_delete as opt
 
@@ -17,4 +20,4 @@ def movie_update_delete_menu():
         elif user_input == "0":
             break
         else:
-            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+            print(f"{Fore.RED}Tokio pasirinkimo nėra. Bandykite dar kartą.")

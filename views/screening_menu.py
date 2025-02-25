@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import services.actions_with_screenings as scr_act
 import services.actions_with_movies as mov_act
 
@@ -23,14 +26,14 @@ Kino seansų planavimo meniu.
                         else:
                             raise IndexError
                     except ValueError:
-                        print(f"{user_input} nėra skaičius. Bandykite dar kartą.")
+                        print(f"{Fore.RED}{user_input} nėra skaičius. Bandykite dar kartą.")
                     except IndexError:
-                        print(f"'{user_input}' nėra tokio filmo numerio. Bandykite dar kartą.")
+                        print(f"{Fore.RED}'{user_input}' nėra tokio filmo numerio. Bandykite dar kartą.")
                 new = scr_act.create_screening_object(movie)
                 scr_act.save_sceening_to_file(new)
                 break
             else:
-                print("Seanso sukūrimas negalimas, nes filmų sąrašas tuščias.")
+                print(f"{Fore.RED}Seanso sukūrimas negalimas, nes filmų sąrašas tuščias.")
         elif user_input == "2":
             if scr_act.empty_screenings_list_check():
                 print()
@@ -40,6 +43,6 @@ Kino seansų planavimo meniu.
         elif user_input == "0":
             break
         else:
-            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+            print(f"{Fore.RED}Tokio pasirinkimo nėra. Bandykite dar kartą.")
 
 

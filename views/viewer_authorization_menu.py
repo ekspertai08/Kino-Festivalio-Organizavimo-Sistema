@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import services.actions_with_viewers as vie_act
 import views.viewer_menu as vm
 
@@ -20,14 +23,15 @@ def viewer_authorization_menu():
                 viewers_list = vie_act.open_viewers_list_file()
                 for i in viewers_list:
                     if i.name == viewer_name:
+                        print(f"{Fore.GREEN}Prisijungta sėkmingai.")
                         upd = vm.viewer_menu(i)
                         vie_act.save_updated_viewer(upd)
-                        print("Žiūrovas sukurtas, galite prisijungti.")
+                        print(f"{Fore.GREEN}Žiūrovas sukurtas, galite prisijungti.")
                         break
                 else:
-                    print("Tokio žiūrovo nėra.")
+                    print(f"{Fore.RED}Tokio žiūrovo nėra.")
             else:
-                print("Šiuo metu registruotų žiūrovų nėra.")
+                print(f"{Fore.RED}Šiuo metu registruotų žiūrovų nėra.")
         elif user_input == "2":
             new = vie_act.create_viewer_object()
             if vie_act.empty_viewer_list_check():
@@ -37,7 +41,7 @@ def viewer_authorization_menu():
         elif user_input == "0":
             break
         else:
-            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+            print(f"{Fore.RED}Tokio pasirinkimo nėra. Bandykite dar kartą.")
             
 
 

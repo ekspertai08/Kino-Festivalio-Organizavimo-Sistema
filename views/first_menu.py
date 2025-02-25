@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import views.coordinator_authorization as ca
 import views.viewer_menu as vm
 import views.viewer_authorization_menu as va
@@ -21,4 +24,4 @@ Kino Festivalių Organizavimo Sistema
         elif user_input == "0":
             exit()
         else:
-            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+            print(f"{Fore.RED}Tokio pasirinkimo nėra. Bandykite dar kartą.")

@@ -3,7 +3,9 @@ import services.actions_with_screenings as scr_act
 import services.actions_with_viewers as vie_act
 import views.ticket_reservation_menu as rs_menu
 import datetime
-
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 def viewer_menu(viewer):
     while True:
@@ -78,9 +80,9 @@ def viewer_menu(viewer):
                             movie_names_list.append(i.name)    
                         user_movie_name = input("Įveskite norimo įvertinti filmo pavadinimą: ")
                         if user_movie_name in viewer.rated_movies:
-                            print("Šis filmas jau buvo įvertintas.")
+                            print(f"{Fore.RED}Šis filmas jau buvo įvertintas.")
                         elif user_movie_name not in movie_names_list:
-                            print("Filmo pavadinimas įvestas neteisingai arba nėra tokio filmo.")
+                            print(f"{Fore.RED}Filmo pavadinimas įvestas neteisingai arba nėra tokio filmo.")
                         else:                         
                             for movie in movie_list:
                                 if movie.name == user_movie_name:
@@ -88,9 +90,9 @@ def viewer_menu(viewer):
                                         try:
                                             user_rating = int(input("Įveskite filmo įvertinimą nuo 1 iki 10: "))
                                             if user_rating > 10:
-                                                print("Įvertinimas negali būti didesnis už 10.")
+                                                print(f"{Fore.RED}Įvertinimas negali būti didesnis už 10.")
                                             elif user_rating < 1:
-                                                print("Įvertinimas negali būti mažesnis už 1. ")
+                                                print(f"{Fore.RED}Įvertinimas negali būti mažesnis už 1. ")
                                             else:
                                                 #update movie
                                                 movie_list = mov_act.open_movie_list_file()
@@ -102,14 +104,14 @@ def viewer_menu(viewer):
                                                 mov_act.save_updated_movie(movie_list)
                                                 if user_movie_name not in viewer.rated_movies:
                                                     viewer.rated_movies.append(movie.name)
-                                                print("Įvertinimas sėkmingas. Ačiū už įvertinimą.")
+                                                print(f"{Fore.GREEN}Įvertinimas sėkmingas. Ačiū už įvertinimą.")
                                                 break
                                         except ValueError:
-                                            print("Įvestis nėra sveikasis skaičius. Mėginkite dar kartą.")
+                                            print(f"{Fore.RED}Įvestis nėra sveikasis skaičius. Mėginkite dar kartą.")
 
             else:
                 print("Kol kas nėra peržiūrėtų filmų.")            
         elif user_input == "0":
             return viewer            
         else:
-            print("Tokio pasirinkimo nėra. Bandykite dar kartą.")
+            print(f"{Fore.RED}Tokio pasirinkimo nėra. Bandykite dar kartą.")
