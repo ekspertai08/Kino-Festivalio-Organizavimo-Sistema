@@ -9,7 +9,7 @@ colorama.init(autoreset=True)
 
 def viewer_menu(viewer):
     while True:
-        print("""
+        print(f"""{Fore.CYAN}
     Žiūrovo meniu.
     1. Pamatyti filmų sąrašą.
     2. Ieškoti filmo.
@@ -72,12 +72,15 @@ def viewer_menu(viewer):
                 if screening_list != False:
                     if len(screening_list)>0 and len(viewer.tickets)>0:
                         print("Peržiūrėti filmai: ")
+                        printed_list = []
                         for screening in screening_list:
                             for ticket in viewer.tickets:
                                 if ticket == screening.id and datetime.datetime.now() > screening.screening_end:
                                     if hasattr(screening.screening_movie, 'name'):
-                                        print(screening.screening_movie.name)
-                                        break                             
+                                        if screening.screening_movie.name not in printed_list:
+                                            print(screening.screening_movie.name)
+                                            printed_list.append(screening.screening_movie.name)
+                                            break                             
                         movie_list = mov_act.open_movie_list_file()
                         movie_names_list = []
                         for i in movie_list:

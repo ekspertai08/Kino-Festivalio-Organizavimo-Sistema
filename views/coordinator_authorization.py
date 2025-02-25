@@ -5,7 +5,7 @@ import views.coordinator_menu as cm
 
 def coordinator_authorization():
     while True:
-        print("""
+        print(f"""{Fore.CYAN}
 Organizatoriaus autentifikavimo meniu.
 """)
         user_name = input("Įveskite organizatoriaus vardą: ")

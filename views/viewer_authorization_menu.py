@@ -11,7 +11,7 @@ import views.viewer_menu as vm
 
 def viewer_authorization_menu():
     while True:
-        print("""
+        print(f"""{Fore.CYAN}
 Žiūrovo autorizacijos meniu.
 1. Prisijungti jau esamam žiūrovui.
 2. Sukurti naują žiūrovą.

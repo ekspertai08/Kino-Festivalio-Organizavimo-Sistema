@@ -6,7 +6,7 @@ import services.actions_with_movies as mov_act
 
 def screening_menu():
     while True:
-        print("""
+        print(f"""{Fore.CYAN}
 Kino seansų planavimo meniu.
 1. Sukurti naują kino seansą.
 2. Peržiūrėti kino seansus.
@@ -19,19 +19,20 @@ Kino seansų planavimo meniu.
                 while True:
                     try:
                         user_input = input("Įveskite filmo numerį, kurio seansą norite suplanuoti: ")
+                        if user_input == "0":
+                            break
                         user_input = int(user_input)
                         if user_input > 0 and user_input <= len(movie_list):
                             movie = movie_list[user_input-1]
-                            break
                         else:
                             raise IndexError
                     except ValueError:
                         print(f"{Fore.RED}{user_input} nėra skaičius. Bandykite dar kartą.")
                     except IndexError:
                         print(f"{Fore.RED}'{user_input}' nėra tokio filmo numerio. Bandykite dar kartą.")
-                new = scr_act.create_screening_object(movie)
-                scr_act.save_sceening_to_file(new)
-                break
+                    new = scr_act.create_screening_object(movie)
+                    scr_act.save_sceening_to_file(new)
+                    break
             else:
                 print(f"{Fore.RED}Seanso sukūrimas negalimas, nes filmų sąrašas tuščias.")
         elif user_input == "2":

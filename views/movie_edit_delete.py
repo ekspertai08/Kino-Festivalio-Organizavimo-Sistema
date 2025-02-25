@@ -7,7 +7,7 @@ import services.actions_with_screenings as scr_act
 def movie_delete():
     while True:
         if mov_act.empty_list_check():
-            print("Filmo ištrynimo meniu.\n")    
+            print(f"{Fore.CYAN}Filmo ištrynimo meniu.\n")    
             mov_act.show_movies_frm_list()
             try:
                 user_input = input("\nNorėdami nutraukti ištrynimo procesą įveskite: 0\nNorėdami tęsti, įveskite norimo ištrinti filmo numerį: ")
@@ -38,7 +38,7 @@ def movie_delete():
 def movie_edit():
     while True:
         if mov_act.empty_list_check():
-            print("Filmo redagavimo meniu.\n")
+            print(f"{Fore.CYAN}Filmo redagavimo meniu.\n")
             mov_act.show_movies_frm_list()
             try:
                 user_input = input("\nNorėdami nutraukti redagavimo procesą įveskite: 0\nNorėdami tęsti, įveskite norimo redaguoti filmo numerį: ")

@@ -2,6 +2,9 @@ import os
 import pickle
 import models.movie as movie
 import datetime
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 def create_movie_object():
     movie_list = open_movie_list_file()
@@ -101,7 +104,7 @@ def search_movies():
     movie_list = open_movie_list_file()
     attributes = ["name", "lenght", "genre", "director", "release_year", "age_rating"]
     while True:
-        print("""Galimi paieškos parametro pasirinkimai:
+        print(f"""{Fore.CYAN}Galimi paieškos parametro pasirinkimai:
                   1. Pavadinimas.
                   2. Ilgis.
                   3. Žanras.

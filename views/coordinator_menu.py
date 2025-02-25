@@ -8,7 +8,7 @@ import views.screening_menu as scr_menu
 
 def coordinator_menu():
     while True:
-        print("""
+        print(f"""{Fore.CYAN}
     Organizatoriaus meniu:
     1. Pridėti naują filmą.
     2. Pašalinti arba atnaujinti esamą filmą.
@@ -27,7 +27,7 @@ def coordinator_menu():
                 print("Filmų sąrašas tuščias.")
         elif user_input == "3":
             if mov_act.empty_list_check():
-                print("""
+                print(f"""{Fore.CYAN}
             Filmo rodymo ir paieškos meniu.
             Pasirinkite ar rinksitės filmą pagal sąrašą ar pagal paiešką:
             1. Parodyti filmų sąrašą.

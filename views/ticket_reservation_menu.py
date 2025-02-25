@@ -7,7 +7,7 @@ import services.actions_with_screenings as scr_act
 
 
 def ticket_reservation_menu (viewer):
-    print("""
+    print(f"""{Fore.CYAN}{Fore.RESET}
 Bilietų reservavimo meniu.
           
 Galimi filmų seansai:

@@ -7,8 +7,8 @@ import views.viewer_authorization_menu as va
 
 def first_menu():
     while True:
-        print("""
-Kino Festivalių Organizavimo Sistema
+        print(f"""{Fore.YELLOW}
+Kino Festivalių Organizavimo Sistema{Fore.CYAN}
     Vartotojo tipo meniu.
               
     Pasirinkite vartotojo tipą:

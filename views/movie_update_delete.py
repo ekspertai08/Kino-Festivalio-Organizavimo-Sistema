@@ -6,7 +6,7 @@ import views.movie_edit_delete as opt
 
 def movie_update_delete_menu():
     while True:   
-        print("""
+        print(f"""{Fore.CYAN}
         Filmų redagavimo meniu:
         1. Pašalinti filmą.
         2. Redaguoti filmą.
