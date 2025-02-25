@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import views.coordinator_menu as cm
 
 def coordinator_authorization():
@@ -11,5 +14,5 @@ Organizatoriaus autentifikavimo meniu.
             cm.coordinator_menu()
             break
         else:
-            print("Slaptažodis neteisingas. Grįžtama į vartotojo tipo meniu.")
+            print(f"{Back.RED}Slaptažodis neteisingas. Grįžtama į vartotojo tipo meniu.")
             break
