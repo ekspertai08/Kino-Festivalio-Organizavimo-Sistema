@@ -8,11 +8,15 @@ def coordinator_authorization():
         print("""
 Organizatoriaus autentifikavimo meniu.
 """)
-        user_input = input("Įveskite organizatoriaus slatažodį: ")
+        user_name = input("Įveskite organizatoriaus vardą: ")
+        name = "Mantas"
         password = "filmas"
-        if user_input == password:
+        user_password = input("Įveskite organizatoriaus slatažodį: ")
+
+        if user_name == name and user_password == password:
+            print(f"{Fore.GREEN} Prisijungta sėkmingai.")
             cm.coordinator_menu()
             break
         else:
-            print(f"{Back.RED}Slaptažodis neteisingas. Grįžtama į vartotojo tipo meniu.")
+            print(f"{Back.RED}Organizatoriaus vardas arba slaptažodis neteisingas. Grįžtama į vartotojo tipo meniu.")
             break

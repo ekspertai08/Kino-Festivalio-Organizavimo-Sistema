@@ -1,6 +1,9 @@
 import models.viewer_class as vc
 import os
 import pickle
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 def create_viewer_object():
     name = input("Įveskite žiūrovo vardą: ")
@@ -39,7 +42,7 @@ def exist_viewer_check(viewer_object):
             print("Toks žiūrovas jau egzistuoja.")
             return        
     save_viewer_to_list(viewer_object)
-    print("Naujas žiūrovas sukurtas, galite prisijungti.")
+    print(f"{Fore.GREEN}Naujas žiūrovas sukurtas, galite prisijungti.")
 
 
 def save_updated_viewer(new):

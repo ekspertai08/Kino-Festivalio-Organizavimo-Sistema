@@ -4,7 +4,7 @@ colorama.init(autoreset=True)
 from art import *
 import views.first_menu
 
-tprint("Filmu       festivalis")
+tprint("KINO       FESTIVALIS")
 while True:
     try:
         views.first_menu.first_menu()

@@ -28,12 +28,15 @@ def viewer_menu(viewer):
         elif user_input == "2":
             if mov_act.empty_list_check():
                 result = mov_act.search_movies()
-                if len(result) == 0:
-                    print("Nieko nerasta.")
+                if result == None:
+                    continue
                 else:
-                    print("Rasta:")
-                    for num, i in enumerate(result, 1):
-                        print(f"{num}. {i}")   
+                    if len(result) == 0:
+                        print("Nieko nerasta.")
+                    else:
+                        print("Rasta:")
+                        for num, i in enumerate(result, 1):
+                            print(f"{num}. {i}")   
             else:
                 print("Filmų sąrašas tuščias.")
         elif user_input == "3":

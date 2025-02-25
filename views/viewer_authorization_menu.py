@@ -26,7 +26,6 @@ def viewer_authorization_menu():
                         print(f"{Fore.GREEN}Prisijungta sėkmingai.")
                         upd = vm.viewer_menu(i)
                         vie_act.save_updated_viewer(upd)
-                        print(f"{Fore.GREEN}Žiūrovas sukurtas, galite prisijungti.")
                         break
                 else:
                     print(f"{Fore.RED}Tokio žiūrovo nėra.")
