@@ -75,8 +75,11 @@ def viewer_menu(viewer):
                         for screening in screening_list:
                             for ticket in viewer.tickets:
                                 if ticket == screening.id and datetime.datetime.now() > screening.screening_end:
-                                    print(screening.screening_movie.name)
-                                    break                                
+                                    if screening.screening_movie.name == None:
+                                        break
+                                    else:
+                                        print(screening.screening_movie.name)
+                                        break                                
                         movie_list = mov_act.open_movie_list_file()
                         movie_names_list = []
                         for i in movie_list:

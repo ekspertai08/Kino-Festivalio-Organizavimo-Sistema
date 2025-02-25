@@ -1,3 +1,6 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 import services.actions_with_movies as mov_act
 import datetime
 
@@ -14,7 +17,7 @@ class Movie_screening:
     
     def screening_movie_if(self):
         if self.screening_movie == None:
-            return f"Nėra priskirto filmo"
+            return f"{Fore.RED}Nėra priskirto filmo, seansas bus atšauktas."
         else:
             return self.screening_movie.name
 
