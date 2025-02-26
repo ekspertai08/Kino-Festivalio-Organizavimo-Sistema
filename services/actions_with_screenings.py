@@ -2,6 +2,9 @@ import datetime
 import pickle
 import models.movie_screening_class as scr_class
 import os
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 
 def create_screening_object(movie):
@@ -16,22 +19,22 @@ def create_screening_object(movie):
                             raise IndexError
                     break
                 except IndexError:
-                    print(f"šiuo metu rodomas kitas kino seansas:\n{i}\n")
+                    print(f"{Fore.RED}šiuo metu rodomas kitas kino seansas:\n{i}\n")
                 except ValueError:
-                    print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
+                    print(f"{Fore.RED}Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
     else:
         while True:
             try:
                 screening_date_time = datetime.datetime.strptime(input("Įveskite kino seanso datą ir laiką, formatu YYYY-MM-DD, HH:MM : "), "%Y-%m-%d, %H:%M")
                 break
             except ValueError:
-                print("Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
+                print(f"{Fore.RED}Data arba laikas, įvesta netinkamu formatu. Bandykite dar kartą.")
     while True:
         try:
             aviable_seats = int(input("Įveskite maksimalų žiurovų kiekį: "))
             break
         except ValueError:
-            print("Įvestis galima tik sveikaisiais skaičiais. Bandykite dar kartą.")
+            print(f"{Fore.RED}Įvestis galima tik sveikaisiais skaičiais. Bandykite dar kartą.")
 
     if screening_list:
         if len(screening_list)>0:
@@ -43,7 +46,7 @@ def create_screening_object(movie):
                             raise ValueError
                     break
                 except ValueError:
-                    print("Toks ID jau yra, nurodykite kitokį.")
+                    print(f"{Fore.RED}Toks ID jau yra, nurodykite kitokį.")
     else:
         id = input("Sukurkite unikalų seanso ID: ")
         
@@ -108,11 +111,3 @@ def update_screening_list_after_movie_update(old_name, updated_movie):
                         screening_list[number].screening_movie = updated_movie
                         save_updated_screening_list(screening_list)
 
-# def exist_viewer_check(viewer_object):
-#     viewer_list = open_viewers_list_file()
-#     for i in viewer_list:
-#         if i.name == viewer_object.name:
-#             print("Toks žiūrovas jau egzistuoja.")
-#         else:
-#             save_viewer_to_list(viewer_object)
-#             print("Naujas žiūrovas sukurtas, galite prisijungti.")
